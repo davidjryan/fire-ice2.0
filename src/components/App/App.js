@@ -16,7 +16,7 @@ class App extends Component {
 
     if (!houseData) {
       return (
-        <div>Is Loading...</div>
+        <img src={logo}/>
       )
     }
     
