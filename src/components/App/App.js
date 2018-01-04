@@ -4,14 +4,22 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import FetchHouseData from '../../actions/FetchHouseData';
+import Card from '../Card/Card';
 
 class App extends Component {
   componentDidMount() {
     this.props.FetchHouseData()
   }
 
-  buildCards() {
-    
+  houseCards() {
+    const { houses } = this.props
+    const cardArray = houses.map((item, index) => {
+      return (
+        <Card
+          key={index}
+          />
+      )
+    })
   }
 
   render() {
@@ -26,7 +34,7 @@ class App extends Component {
           }}> FAKE ACTION</button>
         </div>
         <section className='Display-info'>
-          
+          {/* {this.houseCards()} */}
         </section>
       </div>
     );
