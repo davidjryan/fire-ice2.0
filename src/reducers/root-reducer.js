@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { fake } from './fake-reducer';
+import FetchHouseReducer from './FetchHouseReducer';
 
 const rootReducer = combineReducers({
-  fake
+  houses: FetchHouseReducer
 });
 
 
