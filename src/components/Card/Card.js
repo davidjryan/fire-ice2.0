@@ -3,7 +3,7 @@ import './Card.css';
 import PropTypes from 'prop-types';
 import { cardBuilder } from '../helper';
 
-const Card = ({ cardData, membersToggle }) => {
+export const Card = ({ cardData, membersToggle }) => {
   return (
     <article className="Card">
       <p className="title">{cardData.name}</p>
