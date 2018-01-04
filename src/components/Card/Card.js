@@ -3,7 +3,7 @@ import './Card.css';
 import PropTypes from 'prop-types';
 import { cardBuilder } from '../helper';
 
-export const Card = ({ cardData, membersToggle }) => {
+export const Card = ({ cardData }) => {
   return (
     <article className="Card">
       <p className="title">{cardData.name}</p>
@@ -15,6 +15,10 @@ export const Card = ({ cardData, membersToggle }) => {
       <p className="title">{cardData.words}</p>
     </article>
   );
+};
+
+Card.propTypes = {
+  cardData: PropTypes.object,
 };
 
 export default Card;
