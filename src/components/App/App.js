@@ -3,8 +3,16 @@ import PropTypes, { shape, func, string } from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { fakeAction } from '../../actions';
+import FetchHouseData from '../../actions/FetchHouseData';
+
 class App extends Component {
+  componentDidMount() {
+    this.props.FetchHouseData()
+  }
+
+  buildCards() {
+    
+  }
 
   render() {
     return (
@@ -17,8 +25,9 @@ class App extends Component {
             alert(this.props.fake);
           }}> FAKE ACTION</button>
         </div>
-        <div className='Display-info'>
-        </div>
+        <section className='Display-info'>
+          
+        </section>
       </div>
     );
   }
@@ -29,8 +38,13 @@ App.propTypes = {
   fakeAction: func.isRequired
 };
 
-const mapStateToProps = ({ fake }) => ({ fake });
-const mapDispatchToProps = dispatch => ({ fakeAction:
-  () => dispatch(fakeAction())
-});
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const mapStateToProps = (store) => {
+  const { houses } = store;
+
+  return {
+    houses
+  };
+};
+
+
+export default connect(mapStateToProps, { FetchHouseData })(App);
