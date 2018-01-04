@@ -5,6 +5,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import FetchHouseData from '../../actions/FetchHouseData';
 import Card from '../Card/Card';
+import { isArray } from 'util';
 
 class App extends Component {
   componentDidMount() {
@@ -52,8 +53,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-  fake: shape({ fake: string }),
-  fakeAction: func.isRequired
+  houseData: PropTypes.array,
+  FetchHouseData: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (store) => {
