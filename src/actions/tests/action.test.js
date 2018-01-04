@@ -23,4 +23,5 @@ describe('fetch house actions', () => {
 
     const houseSetRes = await actions.FetchHouseData();
     expect(houseSetRes).toEqual(expected);
-});
+  })
+}
