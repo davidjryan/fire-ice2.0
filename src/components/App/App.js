@@ -24,7 +24,7 @@ class App extends Component {
       return (
         <Card
           key={index}
-          cardData={houseData}
+          cardData={item}
           />
       )
     })
@@ -43,7 +43,7 @@ class App extends Component {
             alert(this.props.fake);
           }}> FAKE ACTION</button>
         </div>
-        <section className='Display-info'>
+        <section className='Display-info Container'>
           {this.houseCards()}
         </section>
       </div>
