@@ -12,14 +12,24 @@ class App extends Component {
   }
 
   houseCards() {
-    const { houses } = this.props
-    const cardArray = houses.map((item, index) => {
+    const { houseData, isLoading } = this.props
+
+    if (!houseData) {
+      return (
+        <div>Is Loading...</div>
+      )
+    }
+    
+    const cardArray = houseData.map((item, index) => {
       return (
         <Card
           key={index}
+          cardData={houseData}
           />
       )
     })
+
+    return cardArray
   }
 
   render() {
@@ -34,7 +44,7 @@ class App extends Component {
           }}> FAKE ACTION</button>
         </div>
         <section className='Display-info'>
-          {/* {this.houseCards()} */}
+          {this.houseCards()}
         </section>
       </div>
     );
@@ -47,10 +57,10 @@ App.propTypes = {
 };
 
 const mapStateToProps = (store) => {
-  const { houses } = store;
+  const { houseData, isLoading } = store.houses;
 
   return {
-    houses
+    houseData
   };
 };
 
