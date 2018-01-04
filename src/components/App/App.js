@@ -4,14 +4,32 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import FetchHouseData from '../../actions/FetchHouseData';
+import Card from '../Card/Card';
 
 class App extends Component {
   componentDidMount() {
     this.props.FetchHouseData()
   }
 
-  buildCards() {
+  houseCards() {
+    const { houseData, isLoading } = this.props
+
+    if (!houseData) {
+      return (
+        <div>Is Loading...</div>
+      )
+    }
     
+    const cardArray = houseData.map((item, index) => {
+      return (
+        <Card
+          key={index}
+          cardData={item}
+          />
+      )
+    })
+
+    return cardArray
   }
 
   render() {
@@ -25,8 +43,8 @@ class App extends Component {
             alert(this.props.fake);
           }}> FAKE ACTION</button>
         </div>
-        <section className='Display-info'>
-          
+        <section className='Display-info Container'>
+          {this.houseCards()}
         </section>
       </div>
     );
@@ -39,10 +57,10 @@ App.propTypes = {
 };
 
 const mapStateToProps = (store) => {
-  const { houses } = store;
+  const { houseData, isLoading } = store.houses;
 
   return {
-    houses
+    houseData
   };
 };
 
